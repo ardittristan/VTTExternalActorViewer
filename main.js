@@ -71,7 +71,7 @@ class CopyPopupApplication extends Application {
             this.close();
         });
         html.find(".sendToApp").on("click", () => {
-            Object.assign(document.createElement('a'), { target: '_blank', href: 'https://viewer.ardittristan.xyz/?' + this.url }).click();       //TODO put url here
+            Object.assign(document.createElement('a'), { target: '_blank', href: 'https://ardittristan.github.io/VTTExternalActorSite/?' + this.url }).click();
         });
         html.find(".copyButton").on("click", () => {
             copyToClipboard(this.url);
