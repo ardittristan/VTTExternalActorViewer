@@ -1,0 +1,17 @@
+{
+	"name": "externalactor",
+	"title": "External Actor Viewer",
+	"description": "",
+	"version": "1.0.0",
+	"author": "ardittristan#0001",
+	"esmodules": ["main.js"],
+	"styles": [
+		"css/externalactor.css"
+	],
+	 "socket": true,
+    "url": "",
+    "manifest": "",
+    "download": "",
+	"minimumCoreVersion": "0.5.5",
+	"compatibleCoreVersion": "0.6.2"
+}

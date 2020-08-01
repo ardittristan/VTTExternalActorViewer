@@ -1,0 +1,16 @@
+.copy-url-window p,
+.copy-url-window code {
+    text-align: center;
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.copy-url-window .buttonDiv {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+}
+
+.copy-url-window button.close {
+    max-width: fit-content;
+}
