@@ -1,6 +1,6 @@
-<p><code>{{url}}</code></p>
+<p onclick="ActorViewer.copyToClipboard($(this).first()[0].textContent)"><code>{{url}}</code></p>
 <div class="buttonDiv">
-<button class="sendToApp">Go to application</button>
-<button class="copyButton">Copy Actor URL</button>
-<button class="close">Close</button>
+    <button class="sendToApp">{{localize "actorViewer.popup.goTo"}}</button>
+    <button class="copyButton">{{localize "actorViewer.popup.copy"}}</button>
+    <button class="close">{{localize "actorViewer.popup.close"}}</button>
 </div>

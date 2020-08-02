@@ -4,14 +4,29 @@
 	"description": "",
 	"version": "1.0.0",
 	"author": "ardittristan#0001",
-	"esmodules": ["main.js"],
+	"esmodules": [
+		"actorviewer.js"
+	],
+	"scripts": [
+		"modules/dnd5e.js"
+	],
+	"systems": [
+		"dnd5e"
+	],
 	"styles": [
 		"css/externalactor.css"
 	],
-	 "socket": true,
-    "url": "",
-    "manifest": "",
-    "download": "",
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"socket": true,
+	"url": "https://github.com/ardittristan/VTTExternalActorViewer",
+	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json",
+	"download": "",
 	"minimumCoreVersion": "0.5.5",
-	"compatibleCoreVersion": "0.6.2"
+	"compatibleCoreVersion": "0.7.0"
 }

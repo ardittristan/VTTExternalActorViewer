@@ -1,40 +1,52 @@
 /** @type {String} */
-const scriptFolder = getRunningScript()().replace("main.js", "").replace(`${window.origin}/`, "");
+const scriptFolder = getRunningScript()().replace("actorviewer.js", "").replace(`${window.origin}/`, "");
+
+Hooks.once("init", () => {
+    game.settings.register("externalactor", "systemSite", {
+        scope: "world",
+        type: String,
+        default: "https://ardittristan.github.io/VTTExternalActorSite/",
+        config: false
+    });
+});
 
 Hooks.once("setup", async () => {
     await manageFile({ action: "createDirectory", storage: "data", target: "/actorAPI" }, { bucket: undefined });
 
-    let actors = {};
-    game.actors.forEach(actor => {
-        let items = [];
-        actor.setFlag("externalactor", "disableExperience", game.settings.get("dnd5e", "disableExperienceTracking"));
-        actor.setFlag("externalactor", "currencyWeight", game.settings.get("dnd5e", "currencyWeight"));
-        actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+    const hookNotExecuted = Hooks.call("actorViewerGenerate");
 
-        actor.items.forEach(item => {
-            item.setFlag("externalactor", "labels", item.labels);
-            items.push(item.data)
+    if (hookNotExecuted) {
+        console.warn("ActorViewer | No settings found for this system.")
+
+        let actors = {};
+        game.actors.forEach(actor => {
+            let items = [];
+
+            actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+
+            actor.items.forEach(item => {
+                item.setFlag("externalactor", "labels", item.labels);
+                items.push(item.data);
+            });
+
+            actors[actor.id] = JSON.parse(JSON.stringify(actor.data));
+            actors[actor.id].items = JSON.parse(JSON.stringify(items));
         });
 
-        
-
-        actors[actor.id] = JSON.parse(JSON.stringify(actor.data))
-        actors[actor.id].items = JSON.parse(JSON.stringify(items))
-    });
-
-    console.log(actors)
-
-    createJsonFile("actors", game.world.name, JSON.stringify(actors));
-
+        // create json file
+        ActorViewer.createActorsFile(actors);
+        // set application button url
+        game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSite/");
+    }
 });
 
 Hooks.on("renderActorSheet", (sheet, html) => {
-    jQuery('<a class="character-id"><i class="fas fa-cog"></i>Get id</a>').insertAfter(html.find(".window-title"));
+    jQuery('<a class="character-id"><i class="fas fa-link"></i>Get id</a>').insertAfter(html.find(".window-title"));
 
     html.find(".character-id").on("click", () => {
         new CopyPopupApplication(`${window.origin}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`, {
             id: "copyPopup",
-            title: "Actor URL",
+            title: game.i18n.localize("actorViewer.actorUrl"),
             template: scriptFolder + "templates/copyPopup.html",
             classes: ["copy-url-window"],
             resizable: false
@@ -71,7 +83,7 @@ class CopyPopupApplication extends Application {
             this.close();
         });
         html.find(".sendToApp").on("click", () => {
-            Object.assign(document.createElement('a'), { target: '_blank', href: 'https://ardittristan.github.io/VTTExternalActorSite/?' + this.url }).click();
+            Object.assign(document.createElement('a'), { target: '_blank', href: game.settings.get("externalactor", "systemSite") + '?' + this.url }).click();
         });
         html.find(".copyButton").on("click", () => {
             copyToClipboard(this.url);
@@ -115,6 +127,7 @@ function getRunningScript() {
 }
 
 function copyToClipboard(text) {
+    console.log(false)
     const listener = function (ev) {
         ev.preventDefault();
         ev.clipboardData.setData('text/plain', text);
@@ -122,4 +135,16 @@ function copyToClipboard(text) {
     document.addEventListener('copy', listener);
     document.execCommand('copy');
     document.removeEventListener('copy', listener);
+    ui.notifications.info(game.i18n.localize("actorViewer.copied"))
 }
+/**
+ * @param  {Actor[]} actors
+ */
+function createActorsFile(actors) {
+    createJsonFile("actors", game.world.name, JSON.stringify(actors));
+}
+
+globalThis.ActorViewer = {
+    createActorsFile: createActorsFile,
+    copyToClipboard: copyToClipboard
+};

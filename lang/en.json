@@ -1,0 +1,11 @@
+{
+    "actorViewer": {
+        "actorUrl": "Actor URL",
+        "popup": {
+            "goTo": "Go to application",
+            "copy": "Copy Actor URL",
+            "close": "Close"
+        },
+        "copied": "Copied to clipboard"
+    }
+}

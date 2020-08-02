@@ -1,10 +1,10 @@
 # VTT 
 
-
+_Does not work for locally hosted Foundry instances._
 
 ## Installation
 
-To install, import this [Manifest]() into your module browser.
+To install, import this [Manifest](https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json) into your module browser.
 
 ## Usage
 
@@ -12,5 +12,5 @@ To install, import this [Manifest]() into your module browser.
 
 ## Changelog
 
-Check the [Changelog]()
+Check the [Changelog](https://github.com/ardittristan/VTTExternalActorViewer/blob/master/CHANGELOG.md)
 
