@@ -64,4 +64,4 @@ For [dnd5e](https://github.com/ardittristan/VTTExternalActorSite/tree/master/src
 
 ### Site template
 
-*coming soon™️*
+A base starting point for a sheet website with comment documentation can be found [here](https://github.com/ardittristan/VTTExternalActorSiteTemplate)
