@@ -29,4 +29,4 @@ If it's not in the current list it probably won't work or there won't be a site 
 
 ***
 
-_Does not work for locally hosted Foundry instances._
+_Does not work when you connect to foundry via http://localhost or via the electron app._
