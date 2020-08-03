@@ -127,7 +127,6 @@ function getRunningScript() {
 }
 
 function copyToClipboard(text) {
-    console.log(false)
     const listener = function (ev) {
         ev.preventDefault();
         ev.clipboardData.setData('text/plain', text);
