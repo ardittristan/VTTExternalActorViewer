@@ -2,7 +2,7 @@
     "actorViewer": {
         "actorUrl": "Actor URL",
         "popup": {
-            "goTo": "Go to application",
+            "goTo": "Go To Application",
             "copy": "Copy Actor URL",
             "close": "Close"
         },
