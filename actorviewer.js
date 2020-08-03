@@ -3,7 +3,7 @@ const scriptFolder = getRunningScript()().replace("actorviewer.js", "").replace(
 
 Hooks.once("init", () => {
     game.settings.register("externalactor", "systemSite", {
-        scope: "world",
+        scope: "client",
         type: String,
         default: "https://ardittristan.github.io/VTTExternalActorSite/",
         config: false
