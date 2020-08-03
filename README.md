@@ -23,6 +23,10 @@ If you click on the \[ [Go to Application](https://ardittristan.github.io/VTTExt
 
 Check the [Changelog](https://github.com/ardittristan/VTTExternalActorViewer/blob/master/CHANGELOG.md)
 
+## Does this work with *system x*?
+
+If it's not in the current list it probably won't work or there won't be a site for it, feel free to make an extension for it! (read more [here](https://github.com/ardittristan/VTTExternalActorViewer/blob/master/CONTRIBUTING.md))
+
 ***
 
 _Does not work for locally hosted Foundry instances._
