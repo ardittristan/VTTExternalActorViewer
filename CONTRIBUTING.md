@@ -16,20 +16,23 @@ Hooks.on("init", () => {                                              // should 
       game.actors.forEach(actor => {                                  // iterate through each actors
         let items = [];                                               // initialize item list for item processing
 
+        if (game.user.isGM) {                                         // needed because permissions
+          actor.setFlag("externalactor", "disableExperience",         // 𝘥𝘯𝘥5𝘦 - xp isn't saved in actor data so we include it via flags
+            game.settings.get("dnd5e", "disableExperienceTracking"));
 
-        actor.setFlag("externalactor", "disableExperience",           // 𝘥𝘯𝘥5𝘦 - xp isn't saved in actor data so we include it via flags
-          game.settings.get("dnd5e", "disableExperienceTracking"));
+          actor.setFlag("externalactor", "currencyWeight",            // 𝘥𝘯𝘥5𝘦 - currency weight isn't saved in actor data
+            game.settings.get("dnd5e", "currencyWeight"));
 
-        actor.setFlag("externalactor", "currencyWeight",              // 𝘥𝘯𝘥5𝘦 - currency weight isn't saved in actor data
-          game.settings.get("dnd5e", "currencyWeight"));
-
-        actor.setFlag("externalactor", "classLabels",                 // 𝘥𝘯𝘥5𝘦 - names for classes aren't saved in actor data
-          actor.itemTypes.class.map(c => c.name).join(", "));
+          actor.setFlag("externalactor", "classLabels",               // 𝘥𝘯𝘥5𝘦 - names for classes aren't saved in actor data
+            actor.itemTypes.class.map(c => c.name).join(", "));
+        }
 
 
         actor.items.forEach(item => {                                 // iterate through item list
-          item.setFlag("externalactor", "labels",                     // item names are not saved in item data
-            item.labels);
+          if (game.user.isGM) {                                       // needed because permissions
+            item.setFlag("externalactor", "labels",                   // item names are not saved in item data
+              item.labels);
+          }
 
           items.push(item.data);                                      // add item to item array
         });

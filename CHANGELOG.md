@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.2
+
+* Fix error spam for non-gm players
+
 ## Version 1.0.1
 
 * Fix non-gm users not having permission to change setting

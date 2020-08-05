@@ -16,16 +16,20 @@ Hooks.once("setup", async () => {
     const hookNotExecuted = Hooks.call("actorViewerGenerate");
 
     if (hookNotExecuted) {
-        console.warn("ActorViewer | No settings found for this system.")
+        console.warn("ActorViewer | No settings found for this system.");
 
         let actors = {};
         game.actors.forEach(actor => {
             let items = [];
 
-            actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+            if (game.user.isGM) {
+                actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+            }
 
             actor.items.forEach(item => {
-                item.setFlag("externalactor", "labels", item.labels);
+                if (game.user.isGM) {
+                    item.setFlag("externalactor", "labels", item.labels);
+                }
                 items.push(item.data);
             });
 
@@ -47,7 +51,7 @@ Hooks.on("renderActorSheet", (sheet, html) => {
         new CopyPopupApplication(`${window.origin}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`, {
             id: "copyPopup",
             title: game.i18n.localize("actorViewer.actorUrl"),
-            template: scriptFolder + "templates/copyPopup.html",
+            template: "modules/externalactor/templates/copyPopup.html",
             classes: ["copy-url-window"],
             resizable: false
         }).render(true);
@@ -134,7 +138,7 @@ function copyToClipboard(text) {
     document.addEventListener('copy', listener);
     document.execCommand('copy');
     document.removeEventListener('copy', listener);
-    ui.notifications.info(game.i18n.localize("actorViewer.copied"))
+    ui.notifications.info(game.i18n.localize("actorViewer.copied"));
 }
 /**
  * @param  {Actor[]} actors

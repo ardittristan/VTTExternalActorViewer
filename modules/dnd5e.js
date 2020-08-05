@@ -5,13 +5,16 @@ Hooks.on("init", () => {
             game.actors.forEach(actor => {
                 let items = [];
 
-
-                actor.setFlag("externalactor", "disableExperience", game.settings.get("dnd5e", "disableExperienceTracking"));
-                actor.setFlag("externalactor", "currencyWeight", game.settings.get("dnd5e", "currencyWeight"));
-                actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+                if (game.user.isGM) {
+                    actor.setFlag("externalactor", "disableExperience", game.settings.get("dnd5e", "disableExperienceTracking"));
+                    actor.setFlag("externalactor", "currencyWeight", game.settings.get("dnd5e", "currencyWeight"));
+                    actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+                }
 
                 actor.items.forEach(item => {
-                    item.setFlag("externalactor", "labels", item.labels);
+                    if (game.user.isGM) {
+                        item.setFlag("externalactor", "labels", item.labels);
+                    }
                     items.push(item.data);
                 });
 
