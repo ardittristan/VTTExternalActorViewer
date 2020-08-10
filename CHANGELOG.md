@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.3
+
+* Change upload method to also work on forge.
+
 ## Version 1.0.2
 
 * Fix error spam for non-gm players

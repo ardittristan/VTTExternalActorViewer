@@ -105,13 +105,7 @@ class CopyPopupApplication extends Application {
 async function createJsonFile(fileName, worldName, content) {
     const file = new File([content], `${worldName}-${fileName}.json`, { type: "application/json", lastModified: Date.now() });
 
-    const fd = new FormData();
-    fd.set("source", "data");
-    fd.set("target", "actorAPI");
-    fd.set("upload", file);
-    fd.set("bucket", null);
-
-    fetch("/upload", { method: "POST", body: fd });
+    FilePicker.upload("data", "actorAPI", file, {})
 }
 
 
