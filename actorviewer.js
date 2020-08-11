@@ -1,6 +1,8 @@
 /** @type {String} */
 const scriptFolder = getRunningScript()().replace("actorviewer.js", "").replace(`${window.origin}/`, "");
 
+let filePath = window.origin;
+
 Hooks.once("init", () => {
     game.settings.register("externalactor", "systemSite", {
         scope: "client",
@@ -48,18 +50,16 @@ Hooks.on("renderActorSheet", (sheet, html) => {
     jQuery('<a class="character-id"><i class="fas fa-link"></i>Get id</a>').insertAfter(html.find(".window-title"));
 
     html.find(".character-id").on("click", () => {
-        new CopyPopupApplication(`${window.origin}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`, {
-            id: "copyPopup",
-            title: game.i18n.localize("actorViewer.actorUrl"),
-            template: "modules/externalactor/templates/copyPopup.html",
-            classes: ["copy-url-window"],
-            resizable: false
-        }).render(true);
+        if (filePath.includes("https://")) {
+            new CopyPopupApplication(filePath + sheet.actor.id).render(true);
+        } else {
+            new CopyPopupApplication(`${window.origin}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`).render(true);
+        }
     });
 });
 
 class CopyPopupApplication extends Application {
-    constructor(url, options) {
+    constructor(url, options = {}) {
         super(options);
 
         this.url = url;
@@ -67,7 +67,11 @@ class CopyPopupApplication extends Application {
 
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-
+            id: "copyPopup",
+            title: game.i18n.localize("actorViewer.actorUrl"),
+            template: "modules/externalactor/templates/copyPopup.html",
+            classes: ["copy-url-window"],
+            resizable: false
         });
     }
 
@@ -105,7 +109,10 @@ class CopyPopupApplication extends Application {
 async function createJsonFile(fileName, worldName, content) {
     const file = new File([content], `${worldName}-${fileName}.json`, { type: "application/json", lastModified: Date.now() });
 
-    FilePicker.upload("data", "actorAPI", file, {})
+    let response = await FilePicker.upload("data", "actorAPI", file, {});
+    filePath = response.path;
+
+    console.log(response)
 }
 
 

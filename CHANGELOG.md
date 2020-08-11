@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.6
+
+* Change upload response handling for forge.
+
 ## Version 1.0.3
 
 * Change upload method to also work on forge.
