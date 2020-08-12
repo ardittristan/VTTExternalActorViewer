@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.7
+
+* Extend FilePicker to not spam notifications.
+
 ## Version 1.0.6
 
 * Change upload response handling for forge.

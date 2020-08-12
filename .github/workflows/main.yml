@@ -11,7 +11,7 @@ jobs:
       shell: bash
       id: get-version
       run: echo "::set-output name=version::$(node ./.github/workflows/get-version.js)"
-    - run: zip -r ./actorViewer.zip module.json actorviewer.js css/ templates/ modules/ lang/                                      # Add folders/files here
+    - run: zip -r ./actorViewer.zip module.json actorviewer.js css/ templates/ modules/ lang/ customFilepickers/                                     # Add folders/files here
     - name: Create Release                                # Create an additional release for this version
       id: create_versioned_release
       uses: ncipollo/release-action@v1
