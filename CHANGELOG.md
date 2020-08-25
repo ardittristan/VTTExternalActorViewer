@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.8
+
+* Change directory creation method.
+
 ## Version 1.0.7
 
 * Extend FilePicker to not spam notifications.

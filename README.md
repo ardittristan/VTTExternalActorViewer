@@ -1,3 +1,5 @@
+![GitHub All Releases](https://img.shields.io/github/downloads/ardittristan/VTTExternalActorViewer/total)
+
 # VTT External Actor Viewer
 
 _For when your dm has too many worlds._

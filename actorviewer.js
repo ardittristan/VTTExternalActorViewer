@@ -12,7 +12,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("setup", async () => {
-    await manageFile({ action: "createDirectory", storage: "data", target: "/actorAPI" }, { bucket: undefined });
+    await FilePicker.createDirectory("data", "actorApi", {}).catch(() => { });
 
     const hookNotExecuted = Hooks.call("actorViewerGenerate");
 
