@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.9
+
+* Fix upload 400 error on case sensitive filesystems. ([thanks ohporter](https://github.com/ardittristan/VTTExternalActorViewer/pull/5))
+
 ## Version 1.0.8
 
 * Change directory creation method.
