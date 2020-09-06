@@ -12,7 +12,7 @@ Hooks.once("init", () => {
 });
 
 Hooks.once("setup", async () => {
-    await FilePicker.createDirectory("data", "actorApi", {}).catch(() => { });
+    await FilePicker.createDirectory("data", "actorAPI", {}).catch(() => { });
 
     const hookNotExecuted = Hooks.call("actorViewerGenerate");
 
