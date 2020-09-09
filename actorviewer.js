@@ -9,6 +9,14 @@ Hooks.once("init", () => {
         default: "https://ardittristan.github.io/VTTExternalActorSite/",
         config: false
     });
+    game.settings.register("externalactor", "compatMode", {
+        scope: "world",
+        type: Boolean,
+        default: false,
+        config: true,
+        name: "Enable performance mode.",
+        hint: "If this module causes performance loss on startup. You can disable certain features with this option. Keep in mind that this'll mean that some data doesn't get exported."
+    })
 });
 
 Hooks.once("setup", async () => {
@@ -21,21 +29,26 @@ Hooks.once("setup", async () => {
 
         let actors = {};
         game.actors.forEach(actor => {
+            const compatMode = game.settings.get("externalactor", "compatMode")
             let items = [];
 
-            if (game.user.isGM) {
-                actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+            if (!compatMode) {
+                if (game.user.isGM) {
+                    actor.setFlag("externalactor", "classLabels", actor.itemTypes.class.map(c => c.name).join(", "));
+                }
+
+                actor.items.forEach(item => {
+                    if (game.user.isGM) {
+                        item.setFlag("externalactor", "labels", item.labels);
+                    }
+                    items.push(item.data);
+                });
             }
 
-            actor.items.forEach(item => {
-                if (game.user.isGM) {
-                    item.setFlag("externalactor", "labels", item.labels);
-                }
-                items.push(item.data);
-            });
-
             actors[actor.id] = JSON.parse(JSON.stringify(actor.data));
-            actors[actor.id].items = JSON.parse(JSON.stringify(items));
+            if (!compatMode) {
+                actors[actor.id].items = JSON.parse(JSON.stringify(items));
+            }
         });
 
         // create json file
