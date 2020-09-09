@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.12
+
+* Added performance setting for edgecase.
+
 ## Version 1.0.9
 
 * Fix upload 400 error on case sensitive filesystems. ([thanks ohporter](https://github.com/ardittristan/VTTExternalActorViewer/pull/5))
