@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.13
+
+* Changed url getter to work on sub-links.
+
 ## Version 1.0.12
 
 * Added performance setting for edgecase.

@@ -1,6 +1,6 @@
 import SilentFilePicker from "./customFilepickers/foundryFilePicker.js";
 
-let filePath = window.origin;
+let filePath = window.location.href.replace("/game", "");
 
 Hooks.once("init", () => {
     game.settings.register("externalactor", "systemSite", {
@@ -65,7 +65,7 @@ Hooks.on("renderActorSheet", (sheet, html) => {
         if (filePath.includes("https://")) {
             new CopyPopupApplication(filePath + sheet.actor.id).render(true);
         } else {
-            new CopyPopupApplication(`${window.origin}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`).render(true);
+            new CopyPopupApplication(`${window.location.href.replace("/game", "")}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`).render(true);
         }
     });
 });
@@ -154,7 +154,7 @@ function createActorsFile(actors) {
 
 /**
  * @type {FilePicker.upload}
- * 
+ *
  * @returns {Promise}
  */
 async function upload(source, path, file, options) {
