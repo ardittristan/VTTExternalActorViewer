@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.0.14
+
+* Push compatible core version.
+
 ## Version 1.0.13
 
 * Changed url getter to work on sub-links.
