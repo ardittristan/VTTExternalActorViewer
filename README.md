@@ -30,6 +30,9 @@ Check the [Changelog](https://github.com/ardittristan/VTTExternalActorViewer/blo
 
 If it's not in the current list it probably won't work or there won't be a site for it, feel free to make an extension for it! (read more [here](https://github.com/ardittristan/VTTExternalActorViewer/blob/master/CONTRIBUTING.md))
 
+* dnd5e
+* pf2e
+
 ***
 
 _Does not work when you connect to foundry via http://localhost or via the electron app._

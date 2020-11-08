@@ -2,16 +2,18 @@
 	"name": "externalactor",
 	"title": "External Actor Viewer",
 	"description": "Makes you able to see characters from unloaded worlds.",
-	"version": "1.0.14",
+	"version": "1.1.0",
 	"author": "ardittristan#0001",
 	"esmodules": [
 		"actorviewer.js"
 	],
 	"scripts": [
-		"modules/dnd5e.js"
+		"modules/dnd5e.js",
+		"modules/pf2e.js"
 	],
 	"systems": [
-		"dnd5e"
+		"dnd5e",
+		"pf2e"
 	],
 	"styles": [
 		"css/externalactor.css"
@@ -28,5 +30,5 @@
 	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json",
 	"download": "https://github.com/ardittristan/VTTExternalActorViewer/releases/latest/download/actorViewer.zip",
 	"minimumCoreVersion": "0.6.0",
-	"compatibleCoreVersion": "0.7.5"
+	"compatibleCoreVersion": "0.7.6"
 }

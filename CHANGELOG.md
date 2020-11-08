@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.1.0
+
+* Add Pathfinder 2e compatibility.
+
 ## Version 1.0.14
 
 * Push compatible core version.
