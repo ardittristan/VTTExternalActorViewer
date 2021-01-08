@@ -126,12 +126,6 @@ async function createJsonFile(fileName, worldName, content) {
   console.log(response);
 }
 
-async function manageFile(data, options) {
-  return new Promise((resolve) => {
-    game.socket.emit("manageFiles", data, options, () => resolve());
-  });
-}
-
 function copyToClipboard(text) {
   const listener = function (ev) {
     ev.preventDefault();

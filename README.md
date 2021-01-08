@@ -32,6 +32,7 @@ If it's not in the current list it probably won't work or there won't be a site 
 
 * dnd5e
 * pf2e
+* callofcthulhu
 
 ***
 

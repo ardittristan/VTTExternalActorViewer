@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 1.2.0
+
+* Add Call of Cthulhu 7th compatibility.
+
 ## Version 1.1.0
 
 * Add Pathfinder 2e compatibility.
