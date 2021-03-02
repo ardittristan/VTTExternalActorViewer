@@ -52,8 +52,9 @@ Hooks.once("setup", async () => {
       }
     });
 
-    // create json file
+    // create json files
     ActorViewer.createActorsFile(actors);
+    ActorViewer.createWorldsFile();
     // set application button url
     game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSite/");
   }
@@ -117,13 +118,13 @@ class CopyPopupApplication extends Application {
  * @param  {String} worldName
  * @param  {String} content
  */
-async function createJsonFile(fileName, worldName, content) {
-  const file = new File([content], `${worldName}-${fileName}.json`, { type: "application/json", lastModified: Date.now() });
+async function createJsonFile(fileName, content) {
+  const file = new File([content], fileName, { type: "application/json", lastModified: Date.now() });
 
   let response = await upload("data", "actorAPI", file, {});
   filePath = response.path;
 
-  console.log(response);
+  console.log('ActorViewer |', response);
 }
 
 function copyToClipboard(text) {
@@ -140,7 +141,33 @@ function copyToClipboard(text) {
  * @param  {Actor[]} actors
  */
 function createActorsFile(actors) {
-  createJsonFile("actors", game.world.name, JSON.stringify(actors));
+  createJsonFile(`${game.world.name}-actors.json`, JSON.stringify(actors));
+}
+
+/**
+ * Create or update the worlds.json file
+ */
+function createWorldsFile() {
+  let worlds = [];
+  const world = {'name': game.world.name, 'title': game.world.title, 'system': game.world.system};
+  console.debug('ActorViewer |', 'Checking for existing worlds.json');
+  fetch(`${window.location.href.replace("/game", "")}/actorAPI/worlds.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.debug('ActorViewer |', 'Existing worlds.json data', data);
+      worlds = data;
+      if (!worlds.some(w => w.name === game.world.name)) {
+        worlds.push(world);
+        console.debug('ActorViewer |', 'Writing data to worlds.json', worlds);
+        createJsonFile('worlds.json', JSON.stringify(worlds));
+      }
+    })
+    .catch(() => {
+      console.debug('ActorViewer |', 'Creating worlds.json');
+      worlds.push(world);
+      console.debug('ActorViewer |', 'Writing data to existing worlds.json', worlds);
+      createJsonFile('worlds.json', JSON.stringify(worlds));
+    });
 }
 
 /**
@@ -159,5 +186,6 @@ async function upload(source, path, file, options) {
 
 globalThis.ActorViewer = {
   createActorsFile: createActorsFile,
+  createWorldsFile: createWorldsFile,
   copyToClipboard: copyToClipboard,
 };

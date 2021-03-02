@@ -13,6 +13,7 @@ Hooks.on("init", () => {
       });
 
       ActorViewer.createActorsFile(actors);
+      ActorViewer.createWorldsFile();
 
       game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTCoC7thExternalActorSite/");
 

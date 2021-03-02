@@ -14,7 +14,7 @@ export default class SilentFilePicker extends FilePicker {
     fd.set("target", path);
     fd.set("upload", file);
     Object.entries(options).forEach((o) => fd.set(...o));
-    console.log(this.uploadURL);
+    console.log('ActorViewer |', this.uploadURL);
     // Dispatch the request
     const request = await fetch(this.uploadURL, { method: "POST", body: fd });
     if (request.status === 413) {

@@ -29,6 +29,7 @@ Hooks.on("init", () => {
 
       // create json file
       ActorViewer.createActorsFile(actors);
+      ActorViewer.createWorldsFile();
       // set application button url
       game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSite/");
 
