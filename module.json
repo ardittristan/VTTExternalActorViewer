@@ -2,7 +2,7 @@
 	"name": "externalactor",
 	"title": "External Actor Viewer",
 	"description": "Makes you able to see characters from unloaded worlds.",
-	"version": "1.2.0",
+	"version": "1.3.0",
 	"author": "ardittristan#0001",
 	"esmodules": [
 		"actorviewer.js"
