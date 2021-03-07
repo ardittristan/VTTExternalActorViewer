@@ -2,7 +2,7 @@
 	"name": "externalactor",
 	"title": "External Actor Viewer",
 	"description": "Makes you able to see characters from unloaded worlds.",
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"author": "ardittristan#0001",
 	"esmodules": [
 		"actorviewer.js"
@@ -10,12 +10,14 @@
 	"scripts": [
 		"modules/dnd5e.js",
 		"modules/pf2e.js",
-		"modules/callofcthulhu.js"
+		"modules/callofcthulhu.js",
+		"modules/CoC7.js"
 	],
 	"systems": [
 		"dnd5e",
 		"pf2e",
-		"callofcthulhu"
+		"callofcthulhu",
+		"CoC7"
 	],
 	"styles": [
 		"css/externalactor.css"

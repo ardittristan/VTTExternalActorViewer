@@ -1,11 +1,12 @@
 Hooks.on("init", () => {
-  if (game.system.id === "callofcthulhu") {
+  if (game.system.id === "CoC7") {
     Hooks.on("actorViewerGenerate", () => {
       const compatMode = game.settings.get("externalactor", "compatMode");
       let actors = {};
       game.actors.forEach((actor) => {
         if (!compatMode) {
           if (game.user.isGM) {
+            actor.setFlag("externalactor", "pulpRules", game.settings.get('CoC7', 'pulpRules'));
           }
         }
 
@@ -13,9 +14,8 @@ Hooks.on("init", () => {
       });
 
       ActorViewer.createActorsFile(actors);
-      ActorViewer.createWorldsFile();
 
-      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSites/callofcthulhu/");
+      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSites/CoC7/");
 
       return false;
     });

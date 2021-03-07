@@ -31,7 +31,7 @@ Hooks.on("init", () => {
       ActorViewer.createActorsFile(actors);
       ActorViewer.createWorldsFile();
       // set application button url
-      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSite/");
+      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSites/dnd5e/");
 
       return false;
     });

@@ -1,5 +1,10 @@
 # Patch Notes
 
+## Version 1.4.0
+
+* Update urls to reflect new site.
+* Add compatibility for the other Call of Cthulhu 7th edition system.
+
 ## Version 1.3.0
 
 * Added functionality to create/update a worlds.json file in the actorAPI folder to allow listing available worlds as part of the external viewer. [#10](https://github.com/ardittristan/VTTExternalActorViewer/pull/10)

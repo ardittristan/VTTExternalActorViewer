@@ -24,7 +24,7 @@ Hooks.on("init", () => {
       ActorViewer.createActorsFile(actors);
       ActorViewer.createWorldsFile();
 
-      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTPF2eExternalActorSite/");
+      game.settings.set("externalactor", "systemSite", "https://ardittristan.github.io/VTTExternalActorSites/pf2e/");
 
       return false;
     });
