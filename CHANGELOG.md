@@ -1,5 +1,9 @@
 # Patch Notes
 
+## Version 2.0.0
+
+* 0.8.0 compatible.
+
 ## Version 1.4.0
 
 * Update urls to reflect new site.

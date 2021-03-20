@@ -2,7 +2,7 @@
 	"name": "externalactor",
 	"title": "External Actor Viewer",
 	"description": "Makes you able to see characters from unloaded worlds.",
-	"version": "1.4.0",
+	"version": "2.0.0",
 	"author": "ardittristan#0001",
 	"esmodules": [
 		"actorviewer.js"
@@ -33,6 +33,6 @@
 	"url": "https://github.com/ardittristan/VTTExternalActorViewer",
 	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json",
 	"download": "https://github.com/ardittristan/VTTExternalActorViewer/releases/latest/download/actorViewer.zip",
-	"minimumCoreVersion": "0.6.0",
-	"compatibleCoreVersion": "0.7.9"
+	"minimumCoreVersion": "0.8.0",
+	"compatibleCoreVersion": "0.8.0"
 }

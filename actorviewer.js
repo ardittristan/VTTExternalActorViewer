@@ -67,7 +67,7 @@ Hooks.on("renderActorSheet", (sheet, html) => {
     if (filePath.includes("https://")) {
       new CopyPopupApplication(filePath + sheet.actor.id).render(true);
     } else {
-      new CopyPopupApplication(`${window.location.href.replace("/game", "")}/actorAPI/${game.world.name}-actors.json${sheet.actor.id}`).render(true);
+      new CopyPopupApplication(`${window.location.href.replace("/game", "")}/actorAPI/${game.world.data.name}-actors.json${sheet.actor.id}`).render(true);
     }
   });
 });
@@ -141,7 +141,7 @@ function copyToClipboard(text) {
  * @param  {Actor[]} actors
  */
 function createActorsFile(actors) {
-  createJsonFile(`${game.world.name}-actors.json`, JSON.stringify(actors));
+  createJsonFile(`${game.world.data.name}-actors.json`, JSON.stringify(actors));
 }
 
 /**
@@ -149,14 +149,14 @@ function createActorsFile(actors) {
  */
 function createWorldsFile() {
   let worlds = [];
-  const world = {'name': game.world.name, 'title': game.world.title, 'system': game.world.system};
+  const world = {'name': game.world.data.name, 'title': game.world.data.title, 'system': game.world.data.system};
   console.debug('ActorViewer |', 'Checking for existing worlds.json');
   fetch(`${window.location.href.replace("/game", "")}/actorAPI/worlds.json`)
     .then((response) => response.json())
     .then((data) => {
       console.debug('ActorViewer |', 'Existing worlds.json data', data);
       worlds = data;
-      if (!worlds.some(w => w.name === game.world.name)) {
+      if (!worlds.some(w => w.name === game.world.data.name)) {
         worlds.push(world);
         console.debug('ActorViewer |', 'Writing data to worlds.json', worlds);
         createJsonFile('worlds.json', JSON.stringify(worlds));
