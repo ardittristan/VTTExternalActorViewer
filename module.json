@@ -34,5 +34,5 @@
 	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json",
 	"download": "https://github.com/ardittristan/VTTExternalActorViewer/releases/latest/download/actorViewer.zip",
 	"minimumCoreVersion": "0.8.0",
-	"compatibleCoreVersion": "0.8.0"
+	"compatibleCoreVersion": "0.8.2"
 }
