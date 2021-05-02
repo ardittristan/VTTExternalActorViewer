@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - '**.md'
       - '**.yml'
+      - '.github/**'
 
 jobs:
   build:
@@ -41,3 +42,8 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: './module.json,./actorViewer.zip'                                                                 # don't forget to rename module zip thing
         tag: latest
+    - name: Invoke push script
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        workflow: Push To Deploy
+        token: ${{ secrets.PERSONAL_TOKEN }}
