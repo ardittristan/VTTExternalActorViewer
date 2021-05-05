@@ -31,8 +31,8 @@
 	],
 	"socket": true,
 	"url": "https://github.com/ardittristan/VTTExternalActorViewer",
-	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json",
-	"download": "https://github.com/ardittristan/VTTExternalActorViewer/releases/latest/download/actorViewer.zip",
+	"manifest": "https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/1.4.0_fix/module.json",
+	"download": "https://github.com/ardittristan/VTTExternalActorViewer/releases/download/1.4.0/actorViewerStatic.zip",
 	"minimumCoreVersion": "0.6.0",
 	"compatibleCoreVersion": "0.7.9"
 }
