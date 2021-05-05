@@ -5,6 +5,8 @@
 
 _For when your dm has too many worlds._
 
+_Because of a mistake normal install for versions pre 2.0.0 are broken, please use [this manifest](https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/1.4.0_fix/module.json) if you want to download version 1.4.0 for foundry 0.7_
+
 ## Installation
 
 To install, import this [Manifest](https://raw.githubusercontent.com/ardittristan/VTTExternalActorViewer/master/module.json) into your module browser.
@@ -33,7 +35,6 @@ If it's not in the current list it probably won't work or there won't be a site 
 * dnd5e
 * pf2e
 * callofcthulhu
-* CoC7
 
 ***
 
